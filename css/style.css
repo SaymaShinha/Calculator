@@ -1,0 +1,11 @@
+body {
+  display: block;
+}
+
+td {
+  text-align: center;
+  background-color: #f3f5f6;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin: 1px;
+}
