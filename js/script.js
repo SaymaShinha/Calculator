@@ -1,3 +1,7 @@
+document.querySelectorAll("td").forEach(function (td) {
+  td.addEventListener("click", calculation);
+});
+
 function calculation() {
   let typedText = event.target.innerHTML;
   let arithmeticOperators = ["+", "-", "×", "÷", "%"];
@@ -5,16 +9,18 @@ function calculation() {
 
   if (!["CE", "C", "⌫", "="].includes(typedText)) {
     if (arithmeticOperators.includes(typedText) && showResult != "") {
+      if(!arithmeticOperators.includes(showResult.at(-1))){
       if (showResult.match(/[-+×÷%]/)) {
         arithmeticOperation(showResult);
 
         document.getElementById("result").value += typedText;
         localStorage.setItem("ao", typedText);
-      } else if (!arithmeticOperators.includes(showResult.at(-1))) {
+      } else {
         localStorage.setItem("ao", typedText);
         localStorage.setItem("firstNumber", showResult);
 
         document.getElementById("result").value += typedText;
+      }
       }
     } else {
       document.getElementById("result").value += typedText;
@@ -35,10 +41,7 @@ function calculation() {
   }
 }
 
-//document.getElementsByTagName("td").addEventListener(onclick, calculation());
-document.querySelectorAll("td").forEach(function (td) {
-  td.addEventListener("click", calculation);
-});
+
 
 function arithmeticOperation(showResult) {
   let firstNumber = Number(localStorage.getItem("firstNumber"));
