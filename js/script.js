@@ -55,7 +55,7 @@ function arithmeticOperation(showResult) {
   } else if (ao == "×") {
     document.getElementById("result").value = firstNumber * secondNumber;
   } else if( ao == "%"){
-    document.getElementById("result").value = firstNumber * secondNumber/100;
+    document.getElementById("result").value = (firstNumber / secondNumber) * 100;
   } else {
     document.getElementById("result").value = firstNumber / secondNumber;
   }
